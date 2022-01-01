@@ -21,11 +21,10 @@ set colorcolumn=80
 set signcolumn=yes
 set cmdheight=2
 set updatetime=50
-
+set laststatus=2
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -34,6 +33,24 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'sheerun/vim-polyglot'
+
+Plugin 'pineapplegiant/spaceduck', { 'branch': 'main' }
+
+Plugin 'itchyny/lightline.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+endif
+
+let g:lightline = {
+    \ 'colorscheme': 'spaceduck',
+    \ }
+
+colorscheme spaceduck
