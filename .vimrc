@@ -28,7 +28,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -51,6 +51,9 @@ if exists('+termguicolors')
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
 endif
+
+let g:ale_linters = {'python': ['flake8']}
+" let g:ale_fixers = {'*': [], 'python': []}
 
 let g:lightline = {
     \ 'colorscheme': 'spaceduck',
