@@ -12,7 +12,6 @@ set noerrorbells
 set nowrap
 set noswapfile
 set nobackup
-set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set scrolloff=8
@@ -22,6 +21,7 @@ set signcolumn=yes
 set cmdheight=2
 set updatetime=50
 set laststatus=2
+set foldmethod=indent
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -42,6 +42,8 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'cburj/vim-plugin-syntax'
 
 Plugin 'dense-analysis/ale'
+
+Plugin 'octol/vim-cpp-enhanced-highlight'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -52,7 +54,9 @@ if exists('+termguicolors')
     set termguicolors
 endif
 
-let g:ale_linters = {'python': ['flake8']}
+let g:ale_linters = { 
+            \'python': ['flake8'], 
+            \}
 " let g:ale_fixers = {'*': [], 'python': []}
 
 let g:lightline = {
