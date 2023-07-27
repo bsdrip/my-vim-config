@@ -23,44 +23,45 @@ set updatetime=50
 set laststatus=2
 set foldmethod=indent
 set nocompatible              " be iMproved, required
+set list listchars=tab:>\ ,trail:-,eol:$
 filetype off                  " required
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/.vim/autoload/plug.vim
+call plug#begin()
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plug 'dikiaap/minimalist'
 
-Plugin 'sheerun/vim-polyglot'
+Plug 'itchyny/lightline.vim'
 
-Plugin 'pineapplegiant/spaceduck', { 'branch': 'main' }
+Plug 'cburj/vim-plugin-syntax'
 
-Plugin 'itchyny/lightline.vim'
+Plug 'dense-analysis/ale'
 
-Plugin 'cburj/vim-plugin-syntax'
-
-Plugin 'dense-analysis/ale'
-
-Plugin 'octol/vim-cpp-enhanced-highlight'
+Plug 'github/copilot.vim'
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()            " required
 filetype plugin indent on    " required
 
-if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
-endif
+"if exists('+termguicolors')
+"    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"    set termguicolors
+"endif
 
 let g:ale_linters = { 
-            \'python': ['flake8'], 
+            \'python': ['flake8'],
+            \'javascript': ['eslint'],
             \}
-" let g:ale_fixers = {'*': [], 'python': []}
+let g:ale_virtualtext_cursor = 'disabled'
 
-let g:lightline = {
-    \ 'colorscheme': 'spaceduck',
-    \ }
+set background=dark
 
-colorscheme spaceduck
+"set t_Co=256
+colorscheme minimalist
+
+set path+=** "
+
+let g:copilot_enabled = v:false
